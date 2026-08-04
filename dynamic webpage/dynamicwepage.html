@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Details</title>
+
+<style>
+
+body{
+    font-family: Arial;
+    background:#eaf4fc;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.container{
+    width:400px;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 0 10px black;
+    text-align:center;
+}
+
+h2{
+    color:chocolate;
+}
+
+input{
+    width:90%;
+    padding:10px;
+    margin:8px;
+    border:1px solid gray;
+    border-radius:5px;
+}
+
+button{
+    padding:10px 20px;
+    background:green;
+    color:white;
+    border:none;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:blue;
+}
+
+.student{
+    margin-top:15px;
+    background:#f7f3f3;
+    padding:10px;
+    border-left:5px solid blue;
+    text-align:left;
+    border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Student Details</h2>
+
+<input type="text" id="name" placeholder="Enter Name">
+
+<input type="text" id="roll" placeholder="Enter Roll Number">
+
+<input type="text" id="course" placeholder="Enter Course">
+
+<br><br>
+
+<button onclick="addStudent()">Add Student</button>
+
+<div id="students"></div>
+
+</div>
+
+<script>
+
+function addStudent(){
+
+    let name = document.getElementById("name").value;
+
+    let roll = document.getElementById("roll").value;
+
+    let course = document.getElementById("course").value;
+
+    if(name=="" || roll=="" || course==""){
+
+        alert("Please fill all fields");
+
+        return;
+    }
+
+    let student = document.createElement("div");
+
+    student.className = "student";
+
+    student.innerHTML =
+    "<p><b>Name:</b>"+name+"</p>"+
+    "<p><b>Roll No:</b> "+roll+"</p>"+
+    "<p><b>Course:</b> "+course+"</p>";
+
+    document.getElementById("students").appendChild(student);
+
+    document.getElementById("name").value = "";
+    document.getElementById("roll").value = "";
+    document.getElementById("course").value = "";
+}
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Basics - Arrays & Functions</title>
+</head>
+<body>
+    <h1>JavaScript Arrays & Functions Demonstration</h1>
+    <div id="output"></div>
+
+    <script>
+        // Array Initialization
+        const marks = [85, 92, 78, 64, 95, 88];
+
+        // Function 1: Calculate Average
+        const calculateAverage = function(arr) {
+            const sum = arr.reduce((acc, curr) => acc + curr, 0);
+            return (sum / arr.length).toFixed(2);
+        }
+
+        // Function 2: Filter High Scores (Marks >= 80)
+        const filterHighScores = (arr) => arr.filter(score => score >= 80);
+
+        // Function 3: Find Max and Min Marks
+        function getMinMax(arr) {
+            return {
+                max: Math.max(...arr),
+                min: Math.min(...arr)
+            };
+        }
+
+        // Execution
+        const avg = calculateAverage(marks);
+        const topMarks = filterHighScores(marks);
+        const { max, min } = getMinMax(marks);
+
+        // Output to Browser Console
+        console.log("Original Marks:", marks);
+        console.log("Average Marks:", avg);
+        console.log("Top Marks (>= 80):", topMarks);
+        console.log(`Highest Mark: ${max}, Lowest Mark: ${min}`);
+
+        // Output to Web Page DOM
+        document.getElementById("output").innerHTML = `
+            <p><strong>Original Marks:</strong> ${marks.join(", ")}</p>
+            <p><strong>Average Marks:</strong> ${avg}</p>
+            <p><strong>Top Scores (&ge; 80):</strong> ${topMarks.join(", ")}</p>
+            <p><strong>Highest:</strong> ${max} | <strong>Lowest:</strong> ${min}</p>
+        `;
+    </script>
+</body>
+</html>

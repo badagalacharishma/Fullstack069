@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Student Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 15px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .profile {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            border-left: 4px solid #007bff;
+        }
+        .profile p {
+            margin: 8px 0;
+        }
+        .label {
+            font-weight: bold;
+            display: inline-block;
+            width: 100px; /* Keeps the colons aligned */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Student Profile</h2>
+
+    <label>Name</label>
+    <input type="text" id="name" value="B.Charishma">
+
+    <label>Roll Number</label>
+    <input type="text" id="roll" value="A24126552067">
+
+    <label>Department</label>
+    <input type="text" id="dept" value="CSE (AI & ML)">
+
+    <label>CGPA</label>
+    <input type="text" id="cgpa" value="9.00">
+
+    <button onclick="showProfile()">Show Profile</button>
+
+    <div id="profileDisplay"></div>
+</div>
+
+<script>
+    // 1. Create the Student class with properties
+    class Student {
+        constructor(name, rollNumber, department, cgpa) {
+            this.name = name;
+            this.rollNumber = rollNumber;
+            this.department = department;
+            this.cgpa = cgpa;
+        }
+    }
+
+    // 2. The function that runs when the button is clicked
+    const showProfile = () => {
+        
+        // Get user input values from the text boxes
+        let name = document.getElementById('name').value;
+        let roll = document.getElementById('roll').value;
+        let dept = document.getElementById('dept').value;
+        let cgpa = document.getElementById('cgpa').value;
+
+        // Validation - stop if fields are empty
+        if (name === '' || roll === '' || dept === '' || cgpa === '') {
+            alert('Please fill in all fields.');
+            return;
+        }
+
+        // 3. Create a new Student object
+        const studentData = new Student(name, roll, dept, cgpa);
+
+        // 4. Display profile dynamically using simple innerHTML
+        const displayDiv = document.querySelector('#profileDisplay');
+        displayDiv.innerHTML = `
+            <div class="profile">
+                <p><span class="label">Name</span> : ${student.name}</p>
+                <p><span class="label">Roll No</span> : ${student.rollNumber}</p>
+                <p><span class="label">Department</span> : ${student.department}</p>
+                <p><span class="label">CGPA</span> : ${student.cgpa}</p>
+            </div>
+        `;
+    }
+showProfile();</script>
+
+</body>
+</html>
